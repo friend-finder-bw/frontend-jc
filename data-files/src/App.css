@@ -1,0 +1,76 @@
+html {
+  background-size: cover;
+}
+
+.App {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10px 10px 10px;
+  margin-top: 0;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', fantasy;
+  font-size: 40px;
+  font-weight: bolder;
+  color: black;
+  margin-top: 5px;
+}
+
+h3, p, strong {
+  color: white;
+  
+  font-family: 'Shadows Into Light', fantasy;
+}
+
+.headerBtn {
+  color: white;
+  background: #3DACE1;
+}
+
+.SmurfForm {
+  margin-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Smurf {
+  border: 5px groove #3DACE1;
+  border-radius: 30px;
+  margin-right: 40px;
+  padding: 10px;
+  background-color: #3DACE1;
+  margin: 10px; 
+}
+
+button {
+  background: #3DACE1;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+}
+
+/* Clear */
