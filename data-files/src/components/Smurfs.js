@@ -16,21 +16,18 @@ class Smurfs extends Component {
     })
   }
 
-  // Getting stuck on how to delete / remove created smurfs. 
-
   render() {
     return (
       <div className="Smurfs">
         <header>
-          <h1>Our Village</h1>
-          <Link to='/'><button className='headerBtn'>Add More Smurfs</button></Link>
+          <h1>Local Friends</h1>
+          <Link to='/'><button className='headerBtn'>- | - Sign Up - | - </button></Link>
         </header>
         <ul>
           {this.props.smurfs.map(smurf => {
             return (
                 <Smurf
                   name={smurf.name}
-                  id={smurf.id}
                   age={smurf.age}
                   height={smurf.height}
                   key={smurf.id}

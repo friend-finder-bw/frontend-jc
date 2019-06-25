@@ -11,7 +11,7 @@ header {
   justify-content: center;
   flex-direction: column;
   padding: 0 10px 10px 10px;
-  margin-top: 0;
+  margin-top: 50px;
 }
 
 h1 {
@@ -30,11 +30,12 @@ h3, p, strong {
 
 .headerBtn {
   color: white;
-  background: #3DACE1;
+  background: rgb(124, 3, 3);
+  border: solid black 3px;
 }
 
 .SmurfForm {
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 form {
@@ -66,11 +67,9 @@ ul {
 }
 
 button {
-  background: #3DACE1;
+  background: rgb(124, 3, 3);
   padding: 10px;
   border-radius: 10px;
   color: white;
-  border: 1px solid black;
+  border: solid black 3px;  
 }
-
-/* Clear */
