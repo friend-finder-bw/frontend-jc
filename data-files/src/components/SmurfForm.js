@@ -74,15 +74,15 @@ class SmurfForm extends Component {
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="What state are you in?"
-            value={this.state.state}
-            name="state"
+            placeholder="Where are you located?"
+            value={this.state.location}
+            name="location"
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="What city are you in?"
-            value={this.state.city}
-            name="city"
+            placeholder="What is your email?"
+            value={this.state.email}
+            name="email"
           />
           <input
             onChange={this.handleInputChange}
