@@ -1,4 +1,6 @@
 
+/* DESKTOP VERSION */
+
 .container {
 	width: 1000px;
 	margin: 0 auto;
@@ -7,8 +9,12 @@
 }
 
 .container .FF {
-	width: 210px;
-	height: 70px;
+	width: 175px;
+	height: 65px;
+	display: block;
+ 	margin-left: auto;
+	margin-right: auto;
+	border-radius: 15px;  
 }
 
 /* HEADER */
@@ -35,6 +41,7 @@ header nav a {
 .main-content .text-content {
 	margin-left: 20px;
 	margin-right: 20px;
+	font-size: 18px;
 }
 .main-content .top-img {
 	margin-top: 50px;
@@ -60,6 +67,10 @@ header nav a {
 	margin-bottom: 50px;
 }
 
+.main-content .middle-content a {
+	text-decoration: none;
+}
+
 button {
 	color: white;
 	background-color: #6fc2d0;
@@ -69,6 +80,9 @@ button {
     text-align: center;
 	font-size: 18px;
 	font-family: 'Arvo', serif;
+	display: block;
+ 	margin-left: auto;
+	margin-right: auto;
 }
 
 .main-content .bottom-content {
@@ -99,6 +113,10 @@ span {
 	margin-bottom: 50px;
 }
 
+.main-content .product-mobile {
+	display: none;
+}
+
 .main-content .infographic-img {
 	margin-top: 25px;
 	width: 600px;
@@ -108,6 +126,7 @@ span {
 }
 
 /* FOOTER */
+
 footer {
 	margin-top: -25px;
 	display: flex;
@@ -116,6 +135,80 @@ footer {
 	width: 1000px;
 	margin-left: 580px;
 	margin-bottom: 50px;
+}
+
+/* MOBILE VERSION */
+@media (max-width: 500px) {
+	.container {
+		width: 500px;
+	}
+
+	header nav {
+		width: 500px;
+		vertical-align: top;
+		margin-top: 25px;
+	}
+
+	header nav a {
+		margin: 15px;
+		font-size: 16px;
+		text-decoration: none;
+		color: #373a6d;
+	}
+
+	.main-content .top-img {
+		display: none;
+	}
+
+	.main-content .top-content {
+		display: flex;
+		flex-direction: column;
+		padding: 15px;
+		margin-bottom: 0.01px;
+	}
+
+	.main-content .main-img {
+		width: 420px;
+		height: 270px;
+		margin-top: 25px;
+	}
+
+	.main-content .middle-content {
+		display: flex;
+		flex-direction: column-reverse;
+		padding: 15px;
+	}
+
+	.main-content .bottom-content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	span {
+		margin-top: 240px;
+		margin-bottom: -175px;
+		transform: rotate(90deg);
+	}
+
+	.main-content .infographic {
+		display: flex;
+		flex-direction: column;
+		width: 485px;
+		margin-left: 0.01px;
+	}
+
+	.main-content .infographic-img {
+		display: none;
+	}
+
+	footer {
+	margin-top: -25px;
+	display: flex;
+	color: #373a6d;
+	font-family: 'Arvo', serif;
+	width: 500px;
+	margin-left: 125px;
+	}
 }
 
 
