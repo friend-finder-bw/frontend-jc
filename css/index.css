@@ -80,6 +80,62 @@ h1 {
     color: white;
   }
 }
+.logo-image {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: center;
+  width: 100%;
+  height: 100%;
+}
+.mission-sttmnt {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: center;
+  font-size: 3.5rem;
+  width: 20%;
+  padding-bottom: 100px;
+  /* Tablet */
+  /* Mobile */
+}
+@media (max-width: 800px) {
+  .mission-sttmnt {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: center;
+    margin: 0 auto;
+    color: orange;
+  }
+}
+@media (max-width: 500px) {
+  .mission-sttmnt {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: center;
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+    font-size: 2rem;
+  }
+}
+h1 .mission-sttmnt .word {
+  /* Tablet */
+  /* Mobile */
+}
+@media (max-width: 800px) {
+  h1 .mission-sttmnt .word {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: center;
+    margin: 0 auto;
+    color: orange;
+  }
+}
+@media (max-width: 500px) {
+  h1 .mission-sttmnt .word {
+    margin: 0 auto;
+    background: orange;
+  }
+}
 body {
   margin: 0 auto;
   background: white;
@@ -107,7 +163,10 @@ body {
   flex-direction: center;
 }
 .image-div .main-image {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: center;
+  width: 70%;
   height: 400px;
   /* Mobile */
   /* Mobile */
@@ -151,7 +210,7 @@ a {
   align-items: center;
   justify-content: space-evenly;
   justify-content: space-around;
-  width: 90%;
+  width: 80%;
   padding-top: 20px;
   margin-bottom: 30px;
   color: orange;
@@ -177,7 +236,7 @@ a {
     width: 100%;
     margin: 0 auto;
     color: white;
-    font-size: 1rem;
+    font-size: 1.3 rem;
   }
 }
 .title {
@@ -254,7 +313,7 @@ img {
   width: 10%;
   color: orange;
   padding-bottom: 90px;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   border: 1px solid red;
   /* Tablet */
   /* Mobile */
@@ -265,7 +324,7 @@ img {
     flex-wrap: wrap;
     flex-direction: center;
     margin: 0 auto;
-    font-size: 0.6rem;
+    font-size: 1rem;
     color: orange;
     padding-top: 30px;
   }
@@ -277,10 +336,10 @@ img {
     font-size: 0.6rem;
   }
 }
-footer {
+footer a {
   display: flex;
   flex-wrap: wrap;
-  width: 82%;
+  width: 100%;
   margin-left: 60px;
   background: orange;
   color: white;
@@ -288,20 +347,22 @@ footer {
   /* Mobile */
 }
 @media (max-width: 800px) {
-  footer {
+  footer a {
     display: flex;
     flex-wrap: wrap;
     flex-direction: center;
     margin: 0 auto;
     font-size: 0.6rem;
+    background: white;
     color: white;
     padding-top: 30px;
   }
 }
 @media (max-width: 500px) {
-  footer {
+  footer a {
     margin: 0 auto;
-    color: white;
+    color: orange;
+    background: white;
     font-size: 0.6rem;
   }
 }
