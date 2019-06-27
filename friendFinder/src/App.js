@@ -1,30 +1,25 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/SmurfNavbar";
-// import "./css/index.css";
-// import "./css/ourStory.css";
-// import "./css/ourTeam.css";
-import Home from "./pages/Home.js";
-import OurStory from "./pages/OurStory";
-import OurTeam from "./pages/OurTeam";
+import SignInForm from "./pages/SignInForm";
+import SignUpForm from "./pages/SignUpForm";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smurfs: []
+      friends: []
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:3333/smurfs")
+      .post("https://friendfinderbe.herokuapp.com/")
       .then(res => {
         console.log(res.data);
         this.setState({
-          smurfs: res.data
+          friends: res.data
         });
       })
       .catch(err => {
@@ -34,18 +29,52 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <Route exact path="/" component={Home}>
-          <Route component={Home} />
-          <Route path="/OurStory" component={OurStory} />
-          <Route path="/OurTeam" component={OurTeam} />
-        </Route>
-        {/* <Route 
-        path='/smurfs' 
-        render= { props => <Smurfs {...props} smurfs={this.state.smurfs} /> } 
-        /> */}
-      </div>
+      <Router basename="/react-auth-ui/">
+        <div className="App">
+          {/* <div className="App__Aside" /> */}
+          <div className="App__Form">
+            <div className="PageSwitcher">
+              <NavLink
+                to="/sign-in"
+                activeClassName="PageSwitcher__Item--Active"
+                className="PageSwitcher__Item"
+              >
+                Sign In
+              </NavLink>
+              <NavLink
+                exact
+                to="/"
+                activeClassName="PageSwitcher__Item--Active"
+                className="PageSwitcher__Item"
+              >
+                Sign Up
+              </NavLink>
+            </div>
+
+            <div className="FormTitle">
+              <NavLink
+                to="/sign-in"
+                activeClassName="FormTitle__Link--Active"
+                className="FormTitle__Link"
+              >
+                Sign In
+              </NavLink>{" "}
+              or{" "}
+              <NavLink
+                exact
+                to="/"
+                activeClassName="FormTitle__Link--Active"
+                className="FormTitle__Link"
+              >
+                Sign Up
+              </NavLink>
+            </div>
+
+            <Route exact path="/" component={SignUpForm} />
+            <Route path="/sign-in" component={SignInForm} />
+          </div>
+        </div>
+      </Router>
     );
   }
 }
