@@ -2,13 +2,35 @@ import React, { Component } from "react";
 import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./App.css";
 import SignInForm from "./pages/SignInForm";
+import SignUpForm from "./pages/SignUpForm";
 
 class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     friends: []
+  //   };
+  // }
+
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:3333/")
+  //     .then(res => {
+  //       console.log(res.data);
+  //       this.setState({
+  //         friends: res.data
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
+
   render() {
     return (
       <Router basename="/react-auth-ui/">
         <div className="App">
-          <div className="App__Aside" />
+          {/* <div className="App__Aside" /> */}
           <div className="App__Form">
             <div className="PageSwitcher">
               <NavLink
@@ -47,8 +69,7 @@ class App extends Component {
               </NavLink>
             </div>
 
-            {/* <Route exact path="/" component={SignUpForm}>
-              </Route> */}
+            <Route exact path="/" component={SignUpForm} />
             <Route path="/sign-in" component={SignInForm} />
           </div>
         </div>
