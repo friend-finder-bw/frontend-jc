@@ -1,4 +1,3 @@
-
 /* DESKTOP VERSION */
 
 .container {
@@ -27,6 +26,7 @@ header nav {
   width: 1000px;
   vertical-align: top;
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 header nav a {
@@ -75,14 +75,15 @@ button {
 	color: white;
 	background-color: #6fc2d0;
     width: 120px;
-    height: 12%;
+    height: 16%;
     border-radius: 10px;
     text-align: center;
 	font-size: 18px;
 	font-family: 'Arvo', serif;
 	display: block;
  	margin-left: auto;
-	margin-right: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
 }
 
 .main-content .bottom-content {
@@ -90,10 +91,10 @@ button {
 	margin-bottom: 50px;
 }
 
-.main-content .bottom-content .text-content {
-	border: 2px solid;
-	border-radius: 25px;
-	padding: 10px;
+.main-content .text-content {
+    border: 2px dashed;
+    border-radius: 25px;
+    padding: 10px;
 }
 
 span {
