@@ -26,9 +26,9 @@ const NavHome = props => {
         </Link> */}
 
         <div>
-          {/* <Link to="/Login" component={Login}>
+          <Link to="/Login" component={Login}>
             Login
-          </Link> */}
+          </Link>
         </div>
       </nav>
     </div>
