@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.png";
-import Login from "./../";
 // import "./../css/index.css";
 import Home from "./../pages/Home.js";
+import Login from "./../pages/Login";
 import OurStory from "./../pages/OurStory";
 import OurTeam from "./../pages/OurTeam";
 
