@@ -1,96 +1,56 @@
-
 import React, { Component } from 'react';
-import axios from 'axios';
-import '../App.css';
-
+import axios from "axios";
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       age: '',
-      gender: '',
-      city: '',
-      state: '',
-      hobby: '',
-      newSmurf: null
+      height: ''
     };
   }
-  
+
   addSmurf = event => {
     event.preventDefault();
 
-    this.setState({
-      name: event.target.name.value,
-      age: event.target.age.value,
-      gender: event.target.gender.value,
-      city: event.target.city.value,
-      state: event.target.state.value,
-      hobby: event.target.hobby.value
-    });
+    axios
+      .post("http://localhost:3333/smurfs", this.state)
+      .then(res => this.props.getSmurfs(res.data))
+      .catch(err => console.log(err));
 
-    axios.post('http://localhost:3333/smurfs', this.state )
-    .then(res => {
-      console.log(res.data);
-      this.setState( {
-        newSmurf : res.data[res.data.length-1]
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    this.props.history.push('/smurfs')
-    window.location.reload();
-    return;
+    this.setState({
+      name: '',
+      age: '',
+      height: ''
+    });
   }
 
   handleInputChange = e => {
-    this.setState({ [e.target.name] : e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="SmurfForm">
-        <h1>Friend Finder</h1>
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
-            placeholder="What is your first name?"
+            placeholder="name"
             value={this.state.name}
             name="name"
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="What is your age?"
+            placeholder="age"
             value={this.state.age}
             name="age"
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="What is your gender?"
-            value={this.state.gender}
-            name="gender"
+            placeholder="height"
+            value={this.state.height}
+            name="height"
           />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="Where are you located?"
-            value={this.state.location}
-            name="location"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="What is your email?"
-            value={this.state.email}
-            name="email"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="What is your favorite hobby?"
-            value={this.state.hobby}
-            name="hobby"
-          />
-          <button className='submit' type="submit">- | - Sign Up - | - </button>
         </form>
       </div>
     );
@@ -98,3 +58,5 @@ class SmurfForm extends Component {
 }
 
 export default SmurfForm;
+
+/* <button type="submit">Add to the village</button> line 54 */ 
