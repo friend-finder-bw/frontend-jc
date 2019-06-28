@@ -2,30 +2,34 @@ import axios from "axios";
 import React, { Component } from "react";
 import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./App.css";
-import SignInForm from "./pages/SignInForm";
-import SignUpForm from "./pages/SignUpForm";
+import SignInForm from "./components/SignInForm";
+import SignUpForm from "./components/SignUpForm";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friends: []
+      data: []
     };
   }
-
-  componentDidMount() {
+  componentDidUpdate() {
     axios
-      .post("https://friendfinderbe.herokuapp.com/")
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          friends: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .get("https://friendfinderbe.herokuapp.com/profiles/unfiltered/")
+      .then(res => this.setState({ data: res.data }))
+      .catch(error => console.log(error));
+    //     this.setState({ items: data });
   }
+
+  addSmurf = data => {
+    document.location.reload();
+    axios
+      .post("https://friendfinderbe.herokuapp.com/profiles/unfiltered/", data)
+      .then(res => {
+        this.setState({ data: res.data });
+        this.props.history.push("/smurf-list");
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (

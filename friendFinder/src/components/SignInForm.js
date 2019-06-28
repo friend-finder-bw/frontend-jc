@@ -1,44 +1,57 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class SignInForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      loggedIn: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
+  componentDidMount() {
+    if (window.token) {
+      this.setState({ loggedIn: true });
+    }
+  }
 
-    this.setState({
-      [name]: value
-    });
+  handleChange(event) {
+    let name = event.target.name;
+    let value = event.target.value;
+    let data = {};
+    data[name] = value;
+
+    this.setState(data);
   }
 
   handleSubmit(e) {
+    this.setState({ loggedIn: true });
     e.preventDefault();
-
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
+    window.axios
+      .post("https://friendfinderbe.herokuapp.com/profiles/unfiltered/", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log(response);
+        this.setState({ loggedIn: true });
+        localStorage.setItem("token", response.data.auth.access_token);
+      });
   }
 
   render() {
+    if (this.state.loggedIn) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="FormCenter">
-        <form
-          onSubmit={this.handleSubmit}
-          className="FormFields"
-          onSubmit={this.handleSubmit}
-        >
+        <form onSubmit={this.handleSubmit} className="FormFields">
           <div className="FormField">
             <label className="FormField__Label" htmlFor="email">
               E-Mail Address
@@ -70,7 +83,13 @@ class SignInForm extends Component {
           </div>
 
           <div className="FormField">
-            <button className="FormField__Button mr-20">Sign In</button>{" "}
+            <button
+              type="submit"
+              value="Submit"
+              className="FormField__Button mr-20"
+            >
+              Sign In
+            </button>{" "}
             <Link to="/" className="FormField__Link">
               Create an account
             </Link>

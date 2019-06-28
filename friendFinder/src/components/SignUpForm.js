@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class SignUpForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       email: "",
@@ -12,29 +12,43 @@ class SignUpForm extends Component {
       age: "",
       gender: "",
       hobby: "",
-      location: "",
-      hasAgreed: false
+      location: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
+  handleChange(event) {
+    let name = event.target.name;
+    let value = event.target.value;
+    console.log(name, value);
 
-    this.setState({
-      [name]: value
-    });
+    let data = {};
+    data[name] = value;
+
+    this.setState(data);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
-    console.log("The form was submitted with the following data:");
-    console.log(this.state);
+    window.axios
+      .post(
+        "https://friendfinderbe.herokuapp.com/profiles/unfiltered/friends",
+        {
+          email: this.state.email,
+          password: this.state.password,
+          name: this.state.name,
+          age: this.state.age,
+          gender: this.state.gender,
+          hobby: this.state.hobby,
+          location: this.state.location
+        }
+      )
+      .then(response => {
+        console.log(response);
+        localStorage.setItem("token", response.data.auth.access_token);
+      });
   }
 
   render() {
@@ -179,7 +193,7 @@ class SignUpForm extends Component {
                 hobby4
               </option>
             </select>
-            {/* <input
+            <input
               type="hobby5"
               id="hobby5"
               className="FormField__Input"
@@ -187,26 +201,13 @@ class SignUpForm extends Component {
               name="hobby5"
               value={this.state.hobby}
               onChange={this.handleChange}
-            /> */}
-          </div>
-          <div className="FormField">
-            <label className="FormField__CheckboxLabel">
-              <input
-                className="FormField__Checkbox"
-                type="checkbox"
-                name="hasAgreed"
-                value={this.state.hasAgreed}
-                onChange={this.handleChange}
-              />{" "}
-              I agree all statements in{" "}
-              <a href="" className="FormField__TermsLink">
-                terms of service
-              </a>
-            </label>
+            />
           </div>
 
           <div className="FormField">
-            <button className="FormField__Button">Sign Up</button>{" "}
+            <button type="submit" value="Submit" className="FormField__Button">
+              Sign Up
+            </button>
             <Link to="/sign-in" className="FormField__Link">
               I'm already member
             </Link>
