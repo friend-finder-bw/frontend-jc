@@ -20,8 +20,10 @@ class SignUpForm extends Component {
   }
 
   handleChange(event) {
-    let name = event.target.name;
-    let value = event.target.value;
+    let target = event.target;
+
+    let name = target.name;
+    let value = target.value;
     console.log(name, value);
 
     let data = {};
@@ -32,22 +34,28 @@ class SignUpForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log({
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.username,
+      age: this.state.age,
+      gender: this.state.gender,
+      hobby: this.state.hobby,
+      location: this.state.location
+    });
     window.axios
-      .post(
-        "https://friendfinderbe.herokuapp.com/profiles/unfiltered/friends",
-        {
-          email: this.state.email,
-          password: this.state.password,
-          name: this.state.name,
-          age: this.state.age,
-          gender: this.state.gender,
-          hobby: this.state.hobby,
-          location: this.state.location
-        }
-      )
+      .post("https://friendfinderbe.herokuapp.com/createnewuser", {
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name,
+        age: this.state.age,
+        gender: this.state.gender,
+        hobby: 1,
+        location: this.state.location
+      })
       .then(response => {
         console.log(response);
-        localStorage.setItem("token", response.data.auth.access_token);
+        // localStorage.setItem("token", response.data.auth.access_token);
       });
   }
 
@@ -57,13 +65,13 @@ class SignUpForm extends Component {
         <form onSubmit={this.handleSubmit} className="FormFields">
           <div className="FormField">
             <label className="FormField__Label" htmlFor="name">
-              Full Name
+              name
             </label>
             <input
-              type="text"
+              type="name"
               id="name"
               className="FormField__Input"
-              placeholder="Enter your full name"
+              placeholder="Enter your name"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
@@ -141,73 +149,27 @@ class SignUpForm extends Component {
           </div>
           <div className="FormField">
             <label className="FormField__Label" htmlFor="hobby">
-              hobbies
+              hobby
             </label>
-            <select className="FormField__Input">
-              <option
-                type="hobby1"
-                id="hobby1"
-                className="FormField__Dropdown"
-                placeholder="Enter your hobby"
-                name="hobby1"
-              />
-              <option
-                type="hobby1"
-                id="hobby1"
-                className="FormField__Dropdown"
-                placeholder="Enter your hobby"
-                name="hobby1"
-                value={this.state.hobby}
-                onChange={this.handleChange}
-              >
-                hobby1
-              </option>
-              <option
-                type="hobby2"
-                id="hobby2"
-                className="FormField__Dropdown"
-                name="hobby2"
-                value={this.state.hobby}
-                onChange={this.handleChange}
-              >
-                hobby2
-              </option>
-              <option
-                type="hobby3"
-                id="hobby3"
-                className="FormField__Dropdown"
-                name="hobby3"
-                value={this.state.hobby}
-                onChange={this.handleChange}
-              >
-                hobby3
-              </option>
-              <option
-                type="hobby4"
-                id="hobby4"
-                className="FormField__Dropdown"
-                name="hobby4"
-                value={this.state.hobby}
-                onChange={this.handleChange}
-              >
-                hobby4
-              </option>
-            </select>
             <input
-              type="hobby5"
-              id="hobby5"
+              type="hobby"
+              id="hobby"
               className="FormField__Input"
               placeholder="Enter your hobby"
-              name="hobby5"
+              name="hobby"
               value={this.state.hobby}
               onChange={this.handleChange}
             />
           </div>
-
           <div className="FormField">
-            <button type="submit" value="Submit" className="FormField__Button">
+            <Link
+              to="/friends"
+              type="submit"
+              value="Submit"
+              className="FormField__Button"
+            >
               Sign Up
-            </button>
+            </Link>
             <Link to="/sign-in" className="FormField__Link">
               I'm already member
             </Link>

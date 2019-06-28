@@ -4,6 +4,7 @@ import { HashRouter as Router, NavLink, Route } from "react-router-dom";
 import "./App.css";
 import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
+import Friends from "./pages/Friends";
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class App extends Component {
     return (
       <Router basename="/react-auth-ui/">
         <div className="App">
-          {/* <div className="App__Aside" /> */}
           <div className="App__Form">
             <div className="PageSwitcher">
               <NavLink
@@ -73,6 +73,7 @@ class App extends Component {
                 Sign Up
               </NavLink>
             </div>
+            <Route exact path="/friends" component={Friends} />
 
             <Route exact path="/" component={SignUpForm} />
             <Route path="/sign-in" component={SignInForm} />
